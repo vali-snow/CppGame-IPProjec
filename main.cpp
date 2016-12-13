@@ -1,29 +1,21 @@
 #include <iostream>
 using namespace std;
 
-int menu()
-    {
+int menu(){
         int choice;
-        cout<<"MENU";
-        cout<<"\n";
-        cout<<"START GAME  (PRESS 1)";
-        cout<<"\n";
-        cout<<"EXIT (PRESS 2)";
-
-        cin>>choice;
-        if(choice==1)
+        cout << "MENU"<< endl;
+        cout << "START GAME (PRESS 1)" << endl;
+        cout << "EXIT (PRESS 2)" << endl;
+        cin >> choice;
+        if (choice==1)
             return 0;
          else
             return 1;
-    };
+}
 
-int main()
+int main(){
+    if(menu()!=1){
 
-{
-
-    if(menu()!=1)
-    {
-        cout << "test" << endl;
     }
     return 0;
 }
