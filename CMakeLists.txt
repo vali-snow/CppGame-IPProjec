@@ -3,5 +3,5 @@ project(CppGame-IPProjec)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp menu.h)
+set(SOURCE_FILES main.cpp menu.h MazeMap.h)
 add_executable(CppGame-IPProjec ${SOURCE_FILES})
