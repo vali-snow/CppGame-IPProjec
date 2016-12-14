@@ -1,12 +1,9 @@
-#include <iostream>
-#include <cstdlib>
-using namespace std;
-
 void story_intro(){
-    cout << "Meet ■ (square)." << endl;
-    cout << "His name is Boris" << endl;
+    cout << "Meet our hero." << endl;
+    cout << "His name is Boris." << endl;
     cout << "Boris is from far far away." << endl;
-    cout << "Boris found a map, on one of his victims." << endl;
+    cout << "Slav born and raised." << endl;
+    cout << "Boris found a map on one of his victims." << endl;
     cout << "..." << endl;
     cout << "Boris want to find out what X stand for." << endl;
     cout << "And here begins the story of Boris, as he enters the maze .." << endl << flush;
@@ -26,7 +23,7 @@ void story_win(){
     system ("CLS");
 }
 
-void story_died(){
+void story_demise(){
     cout << "Boris has met his demise!" << endl;
     cout << "Raise another Boris, play again." << endl << flush;
     system ("PAUSE");
