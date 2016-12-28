@@ -27,9 +27,53 @@ void move_player_input(char value){
     }
 }
 
+void maze_with_1()
+{
+    maze_shadow.values[Boris.x][Boris.y]=2;
+
+    maze_shadow.values[Boris.x-1][Boris.y-1]=1;
+    maze_shadow.values[Boris.x-1][Boris.y]=1;
+    maze_shadow.values[Boris.x-1][Boris.y+1]=1;
+
+    maze_shadow.values[Boris.x][Boris.y-1]=1;
+    maze_shadow.values[Boris.x][Boris.y+1]=1;
+
+    maze_shadow.values[Boris.x+1][Boris.y-1]=1;
+    maze_shadow.values[Boris.x+1][Boris.y]=1;
+    maze_shadow.values[Boris.x+1][Boris.y+1]=1;
+
+}
+
+
+void print_all_around_Boris_and_explored_zone()
+{
+    int i,j;
+    for(i=0;i<maze_char.n;i++) {
+        for (j = 0; j < maze_char.m; j++)
+        {
+            if (maze_shadow.values[i][j] == 2)
+                cout << setw(2) << char(66);
+
+            if (maze_shadow.values[i][j] == 1)
+                if(i==4&&j==8)
+                    cout << setw(2) << char(88);
+                    else
+                        cout << setw(2) << char(maze_char.values[i][j]);
+
+            if (maze_shadow.values[i][j] == 0)
+                cout << setw(2) << char(177);
+        }
+
+        cout << "\n";
+    }
+
+
+}
 void movement_update(){
     char keyboard_input;
-    printMap();
+    //printMap();
+    maze_with_1();
+    print_all_around_Boris_and_explored_zone();
     while (Boris.x!=exit_maze.x or Boris.y!=exit_maze.y){
         cout << "Move player (WASD): ";
         cin >> keyboard_input;
@@ -41,8 +85,12 @@ void movement_update(){
         }
         system("CLS");
         move_player_input(keyboard_input);
-        printMap();
+        //printMap();
+        maze_with_1();
+        print_all_around_Boris_and_explored_zone();
     }
     system("CLS");
     story_win();
 }
+
+

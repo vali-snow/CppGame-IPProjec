@@ -12,6 +12,8 @@ void SetMazeColor(int value){
     }
 }
 
+
+
 void printMap(){
     for (int i = 0; i < maze_char.n; i++){
         for (int j = 0; j < maze_char.m; j++){
@@ -29,4 +31,7 @@ void printMap(){
         cout << endl;
     }
     SetColor(7);
+
+
 }
+
