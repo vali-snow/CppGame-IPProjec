@@ -12,26 +12,39 @@ void SetMazeColor(int value){
     }
 }
 
-
+void update_maze_shadow(){
+    maze_shadow.values[Boris.x-1][Boris.y-1]=1;
+    maze_shadow.values[Boris.x-1][Boris.y]=1;
+    maze_shadow.values[Boris.x-1][Boris.y+1]=1;
+    maze_shadow.values[Boris.x][Boris.y-1]=1;
+    maze_shadow.values[Boris.x][Boris.y]=1;
+    maze_shadow.values[Boris.x][Boris.y+1]=1;
+    maze_shadow.values[Boris.x+1][Boris.y-1]=1;
+    maze_shadow.values[Boris.x+1][Boris.y]=1;
+    maze_shadow.values[Boris.x+1][Boris.y+1]=1;
+}
 
 void printMap(){
     for (int i = 0; i < maze_char.n; i++){
         for (int j = 0; j < maze_char.m; j++){
-            if ((i==Boris.x and j==Boris.y)){
-                SetColor(6);
-                cout << setw(2) << char(66);
-            } else if (i==exit_maze.x and j==exit_maze.y) {
-                SetColor(6);
-                cout << setw(2) << char(88);
-            }else {
-                SetMazeColor(maze_char.values[i][j]);
-                cout << setw(2) <<  char(maze_char.values[i][j]);
+            if (maze_shadow.values[i][j]==1){
+                if ((i==Boris.x and j==Boris.y)){
+                    SetColor(6);
+                    cout << setw(2) << char(66);
+                } else if (i==exit_maze.x and j==exit_maze.y) {
+                    SetColor(6);
+                    cout << setw(2) << char(88);
+                }else {
+                    SetMazeColor(maze_char.values[i][j]);
+                    cout << setw(2) <<  char(maze_char.values[i][j]);
+                }
+            }else{
+                SetMazeColor(177);
+                cout << setw(2) <<  char(177);
             }
         }
         cout << endl;
     }
     SetColor(7);
-
-
 }
 

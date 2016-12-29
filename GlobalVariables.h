@@ -3,6 +3,7 @@ using namespace std;
 #include <iomanip>
 #include "windows.h"
 #include <Wincon.h>
+#include "conio.h"
 
 #define ROWS 6
 #define COLUMNS 10

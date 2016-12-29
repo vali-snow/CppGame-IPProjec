@@ -3,6 +3,7 @@ char menu(){
     cout << "CONSOLE MAZE:MAIN MENU" << endl;
     cout << "START GAME (PRESS 1)" << endl;
     cout << "EXIT (PRESS X)" << endl;
-    cin >> choice;
+    choice=(char)getch();
+    system("CLS");
     return choice;
 }

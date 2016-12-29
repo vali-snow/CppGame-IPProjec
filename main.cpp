@@ -5,6 +5,7 @@
 #include "Movement.h"
 
 int main(){
+    SetColor(7);
     char choice=menu();
     if (choice=='1'){
         story_intro();
@@ -15,8 +16,6 @@ int main(){
         system("CLS");
         SetColor(4);
         cout << "You can only chose 1 or X! Try again;" << endl;
-        SetColor(7);
-        choice=menu();
+        main();
     }
-
 }
