@@ -48,6 +48,7 @@ void printMap(){
         cout << endl;
     }
     SetColor(7);
+    
     highscore=highscore-100;
 }
 
