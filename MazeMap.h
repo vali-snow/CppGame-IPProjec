@@ -7,10 +7,12 @@ void SetColor(WORD value){
 
 void SetMazeColor(int value){
     switch(value) {
+        case 1: SetColor(12);break;
         case 177 : SetColor(13); break; //color for ■
         default: SetColor(7); break;
     }
 }
+
 
 void update_maze_shadow(){
     maze_shadow.values[Boris.x-1][Boris.y-1]=1;
@@ -25,10 +27,21 @@ void update_maze_shadow(){
 }
 
 void printMap(){
+
     score=lives*100-moves;
     cout<<setw(2) <<"SCORE:"<<score<<"          LIVES LEFT:"<<lives<<"         MOVES THIS FAR:"<<moves<<"\n \n";
     for (int i = 0; i < maze_char.n; i++){
         for (int j = 0; j < maze_char.m; j++){
+
+            if (i==Boris.x and j==Boris.y &&char(maze_char.values[i][j])==char(1))
+            {
+                lives--;
+                maze_char.values[i][j]=char(32);
+            }
+
+            if (i==Boris.x and j==Boris.y &&char(maze_char.values[i][j])==char(176)&& moves1!=moves)
+                    lives--;
+
             if (maze_shadow.values[i][j]==1){
                 if ((i==Boris.x and j==Boris.y)){
                     SetColor(6);
@@ -44,8 +57,10 @@ void printMap(){
                 SetMazeColor(177);
                 cout << setw(2) <<  char(177);
             }
+
         }
         cout << endl;
     }
     SetColor(7);
+    moves1=moves;
 }
