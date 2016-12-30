@@ -23,9 +23,11 @@ void update_maze_shadow(){
     maze_shadow.values[Boris.x+1][Boris.y]=1;
     maze_shadow.values[Boris.x+1][Boris.y+1]=1;
 }
-double highscore=maze_char.n*maze_char.m*100;
+
+
 void printMap(){
-    cout<<setw(2) <<"HIGHSCORE: "<<highscore<<"\n \n";
+    score=lives*100-moves;
+    cout<<setw(2) <<"SCORE:"<<score<<"          LIVES LEFT:"<<lives<<"         MOVES THIS FAR:"<<moves<<"\n \n";
 
     for (int i = 0; i < maze_char.n; i++){
         for (int j = 0; j < maze_char.m; j++){
@@ -48,7 +50,7 @@ void printMap(){
         cout << endl;
     }
     SetColor(7);
-    
-    highscore=highscore-100;
+
+   moves++;
 }
 

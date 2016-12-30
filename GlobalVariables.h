@@ -38,3 +38,5 @@ struct exit_loc{
 };
 player Boris = {1,1};
 exit_loc exit_maze = {4,8};
+
+long score,lives=5,moves=0;
