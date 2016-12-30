@@ -10,6 +10,7 @@ void move_player(int x, int y){
     } else {
         Boris.x+=x;
         Boris.y+=y;
+        moves++;
     }
 }
 
@@ -48,5 +49,3 @@ void movement_update(){
     system("CLS");
     story_win();
 }
-
-

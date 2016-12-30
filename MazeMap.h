@@ -24,11 +24,9 @@ void update_maze_shadow(){
     maze_shadow.values[Boris.x+1][Boris.y+1]=1;
 }
 
-
 void printMap(){
     score=lives*100-moves;
     cout<<setw(2) <<"SCORE:"<<score<<"          LIVES LEFT:"<<lives<<"         MOVES THIS FAR:"<<moves<<"\n \n";
-
     for (int i = 0; i < maze_char.n; i++){
         for (int j = 0; j < maze_char.m; j++){
             if (maze_shadow.values[i][j]==1){
@@ -50,7 +48,4 @@ void printMap(){
         cout << endl;
     }
     SetColor(7);
-
-   moves++;
 }
-

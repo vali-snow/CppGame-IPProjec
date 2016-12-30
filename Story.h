@@ -18,7 +18,7 @@ void story_win(){
     cout << "To his amazement," << endl;
     cout << "He finds the most incredible of riches:" << endl << flush;
     system ("PAUSE");
-    cout << "VODKA!" << endl << flush;
+    cout << score << " bottles of VODKA!" << endl << flush;
     system ("PAUSE");
     system ("CLS");
 }
@@ -29,4 +29,3 @@ void story_demise(){
     system ("PAUSE");
     system ("CLS");
 }
-
