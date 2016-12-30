@@ -23,9 +23,15 @@ void story_win(){
     system ("CLS");
 }
 
-void story_demise(){
-    cout << "Boris has met his demise!" << endl;
-    cout << "Raise another Boris, play again." << endl << flush;
-    system ("PAUSE");
+char story_demise(){
+    char choice='Z';
+    while (choice!='Y' and choice!='y' and choice!='N' and choice!='n'){
+        system ("CLS");
+        cout << "Boris has met his demise!" << endl;
+        cout << "Raise another Boris, play again." << endl;
+        cout << "Do you want to play again? (Y/N)" << endl;
+        choice=(char)getch();
+    }
     system ("CLS");
+    return choice;
 }

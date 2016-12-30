@@ -1,7 +1,7 @@
 void ClearLastConsoleLine(){
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,ROWS});
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,ROWS+2});
     WriteConsole(GetStdHandle(STD_OUTPUT_HANDLE),"                                                  ",50,NULL,NULL);
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,ROWS});
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,ROWS+2});
 }
 
 void move_player(int x, int y){
@@ -12,6 +12,19 @@ void move_player(int x, int y){
         Boris.y+=y;
         moves++;
     }
+    switch(maze_char.values[Boris.x][Boris.y]) {
+        case 1 : {
+            lives--;
+            maze_char.values[Boris.x][Boris.y]=32;
+            break;
+        }
+        case 176 : {
+            lives--;
+            break;
+        }
+        default: break;
+    }
+    score=lives*100-moves;
 }
 
 void move_player_input(char value){
@@ -29,6 +42,7 @@ void move_player_input(char value){
 }
 
 void movement_update(){
+    reset_variables();
     char keyboard_input;
     update_maze_shadow();
     printMap();
@@ -44,6 +58,13 @@ void movement_update(){
         system("CLS");
         move_player_input(keyboard_input);
         update_maze_shadow();
+        if (lives<1){
+            char choice=story_demise();
+            if (choice=='Y' or choice=='y'){
+                movement_update();
+            }
+            return;
+        }
         printMap();
     }
     system("CLS");
