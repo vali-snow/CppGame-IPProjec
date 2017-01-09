@@ -6,6 +6,14 @@ void ClearLastConsoleLine(){
 
 void move_player(int x, int y){
     if (maze_char.values[Boris.x+x][Boris.y+y]==177){
+        if(bomb>0)
+        {
+            maze_char.values[Boris.x+x][Boris.y+y]=32;
+            Boris.x+=x;
+            Boris.y+=y;
+            moves++;
+            bomb--;
+        }
         return;
     } else {
         Boris.x+=x;
@@ -15,6 +23,21 @@ void move_player(int x, int y){
     switch(maze_char.values[Boris.x][Boris.y]) {
         case 1 : {
             lives--;
+            maze_char.values[Boris.x][Boris.y]=32;
+            break;
+        }
+        case 245:
+        {
+            maze_char.values[Boris.x][Boris.y]=32;
+
+            for(int i=0;i<maze_shadow.n;i++)
+                for(int j=0;j<maze_shadow.m;j++)
+                    maze_shadow.values[i][j]=1;
+            break;
+        }
+        case 15:
+        {
+            bomb++;
             maze_char.values[Boris.x][Boris.y]=32;
             break;
         }
@@ -40,6 +63,7 @@ void move_player_input(char value){
         default: return;
     }
 }
+
 
 void movement_update(){
     reset_variables();

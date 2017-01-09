@@ -28,7 +28,8 @@ void update_maze_shadow(){
 }
 
 void printMap(){
-    cout<<setw(2) <<"SCORE:"<<score<<"          LIVES LEFT:"<<lives<<"         MOVES THIS FAR:"<<moves<<"\n \n";
+    cout<<setw(2) <<"SCORE:"<<score<<"          LIVES LEFT:"<<lives<<"         MOVES THIS FAR:"<<moves;
+    cout<<setw(2)<<"          BOMBS:"<<bomb<<"\n \n";
     for (int i = 0; i < maze_char.n; i++){
         for (int j = 0; j < maze_char.m; j++){
             if (maze_shadow.values[i][j]==1){
