@@ -213,6 +213,7 @@ char story_demise(){
                 cout << death[i][j];
                 if (i==3 and j==54) SetStoryColor(12);
                 if (i==3 and j==64) SetStoryColor(13);
+
                 if (i==4 and j==21) SetStoryColor(14);
                 if (i==4 and j==24) SetStoryColor(13);
                 if (i==4 and j==41) SetStoryColor(14);
