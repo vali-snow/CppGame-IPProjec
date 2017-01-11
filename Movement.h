@@ -82,7 +82,7 @@ void movement_update(){
         system("CLS");
         move_player_input(keyboard_input);
         update_maze_shadow();
-        if (lives<1||score==0){
+        if (lives<1||score<=0){
             char choice=story_demise();
             if (choice=='Y' or choice=='y'){
                 movement_update();
