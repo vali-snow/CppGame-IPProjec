@@ -197,7 +197,12 @@ void story_win(){
     cout << "He finds the most incredible of riches:" << endl << flush;
     system ("PAUSE");
     SetStoryColor(14);
-    cout << endl << "     " << score;
+    if (score >0){
+        cout << endl << "     " << score;
+    }else{
+        SetStoryColor(12);
+        cout << endl << "     " << "No";
+    }
     SetStoryColor(15);
     cout << " bottles of ";
     SetStoryColor(13);
