@@ -4,52 +4,61 @@ void ClearLastConsoleLine(){
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,ROWS+2});
 }
 
-void move_player(int x, int y){
-    if (maze_char.values[Boris.x+x][Boris.y+y]==177){
-        if(bomb>0)
-        {
-            maze_char.values[Boris.x+x][Boris.y+y]=32;
-            Boris.x+=x;
-            Boris.y+=y;
+void move_player(int x, int y) {
+    if (maze_char.values[Boris.x + x][Boris.y + y] == 178) {
+        return;
+    } else if (maze_char.values[Boris.x + x][Boris.y + y] == 177){
+        if (bomb > 0) {
+            maze_char.values[Boris.x + x][Boris.y + y] = 32;
+            Boris.x += x;
+            Boris.y += y;
             moves++;
             bomb--;
         }
-        return;
-    } else {
-        Boris.x+=x;
-        Boris.y+=y;
+    } else{
+        Boris.x += x;
+        Boris.y += y;
         moves++;
     }
-    switch(maze_char.values[Boris.x][Boris.y]) {
+    switch (maze_char.values[Boris.x][Boris.y]) {
         case 1 : {
             lives--;
-            maze_char.values[Boris.x][Boris.y]=32;
+            maze_char.values[Boris.x][Boris.y] = 32;
             break;
         }
-        case 245:
-        {
-            maze_char.values[Boris.x][Boris.y]=32;
+        case 245: {
+            maze_char.values[Boris.x][Boris.y] = 32;
 
-            for(int i=0;i<maze_shadow.n;i++)
-                for(int j=0;j<maze_shadow.m;j++)
-                    maze_shadow.values[i][j]=1;
+            for (int i = 0; i < maze_shadow.n; i++)
+                for (int j = 0; j < maze_shadow.m; j++)
+                    maze_shadow.values[i][j] = 1;
             break;
         }
-        case 15:
-        {
+        case 15: {
             bomb++;
-            maze_char.values[Boris.x][Boris.y]=32;
+            maze_char.values[Boris.x][Boris.y] = 32;
             break;
         }
         case 176 : {
             lives--;
             break;
         }
-        default: break;
+        case 4 : {
+            bonus = 11;
+            maze_char.values[Boris.x][Boris.y] = 32;
+            break;
+        }
+        case 3 : {
+            maze_char.values[Boris.x][Boris.y] = 32;
+            lives++;
+            ok++;
+            break;
+        }
+        default:
+            break;
     }
-    score=lives*100-moves;
+    score = lives * 100 - 100 * ok - moves + bonus;
 }
-
 void move_player_input(char value){
     switch(value) {
         case 'A' : move_player(0,-1); break; // move_left
