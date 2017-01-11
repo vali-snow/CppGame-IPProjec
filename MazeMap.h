@@ -11,6 +11,7 @@ void SetMazeColor(int value){
         case 176: SetColor(10);break; //color for trap
         case 177 : SetColor(13); break; //color for wall
         case 178 : SetColor(13); break;
+        case 179 : SetColor(13); break;
         default: SetColor(7); break;
     }
 }
@@ -42,10 +43,11 @@ void printMap(){
                             cout << setw(2) << char(88);
                         }else{
                             SetMazeColor(maze_char.values[i][j]);
-                            if(maze_char.values[i][j]==178)
+                            if(maze_char.values[i][j]==178 or maze_char.values[i][j]==179){
                                 cout << setw(2) << char(177);
-                            else
+                            } else{
                                 cout << setw(2) << char(maze_char.values[i][j]);
+                            }
                         }
                 }else{
                     SetMazeColor(177);
